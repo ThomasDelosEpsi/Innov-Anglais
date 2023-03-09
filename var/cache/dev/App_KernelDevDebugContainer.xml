@@ -184,7 +184,6 @@
     </service>
     <service id="App\DataFixtures\CompanyFixtures" class="App\DataFixtures\CompanyFixtures" autowire="true" autoconfigure="true">
       <tag name="doctrine.fixture.orm"/>
-      <argument type="service" id="security.user_password_hasher"/>
     </service>
     <service id="App\DataFixtures\UserFixtures" class="App\DataFixtures\UserFixtures" autowire="true" autoconfigure="true"/>
     <service id="App\Repository\BillRepository" class="App\Repository\BillRepository" autowire="true" autoconfigure="true">
