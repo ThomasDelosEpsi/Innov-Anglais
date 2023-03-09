@@ -1,0 +1,39 @@
+<?php
+
+declare(strict_types=1);
+
+namespace DoctrineMigrations;
+
+use Doctrine\DBAL\Schema\Schema;
+use Doctrine\Migrations\AbstractMigration;
+
+/**
+ * Auto-generated Migration: Please modify to your needs!
+ */
+final class Version20230309105910 extends AbstractMigration
+{
+    public function getDescription(): string
+    {
+        return '';
+    }
+
+    public function up(Schema $schema): void
+    {
+        // this up() migration is auto-generated, please modify it to your needs
+        $this->addSql('CREATE TABLE do_do (id INT AUTO_INCREMENT NOT NULL, result_test DOUBLE PRECISION NOT NULL, date_execution DATE NOT NULL, PRIMARY KEY(id)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB');
+        $this->addSql('DROP TABLE date_execution');
+        $this->addSql('ALTER TABLE test ADD test_id_id INT NOT NULL');
+        $this->addSql('ALTER TABLE test ADD CONSTRAINT FK_D87F7E0C749A385C FOREIGN KEY (test_id_id) REFERENCES do_do (id)');
+        $this->addSql('CREATE INDEX IDX_D87F7E0C749A385C ON test (test_id_id)');
+    }
+
+    public function down(Schema $schema): void
+    {
+        // this down() migration is auto-generated, please modify it to your needs
+        $this->addSql('ALTER TABLE test DROP FOREIGN KEY FK_D87F7E0C749A385C');
+        $this->addSql('CREATE TABLE date_execution (date_execution DATE NOT NULL, PRIMARY KEY(date_execution)) DEFAULT CHARACTER SET utf8mb4 COLLATE `utf8mb4_unicode_ci` ENGINE = InnoDB COMMENT = \'\' ');
+        $this->addSql('DROP TABLE do_do');
+        $this->addSql('DROP INDEX IDX_D87F7E0C749A385C ON test');
+        $this->addSql('ALTER TABLE test DROP test_id_id');
+    }
+}
