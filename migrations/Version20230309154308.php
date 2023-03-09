@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20230309110030 extends AbstractMigration
+final class Version20230309154308 extends AbstractMigration
 {
     public function getDescription(): string
     {
@@ -20,16 +20,12 @@ final class Version20230309110030 extends AbstractMigration
     public function up(Schema $schema): void
     {
         // this up() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE test DROP FOREIGN KEY FK_D87F7E0C749A385C');
-        $this->addSql('DROP INDEX IDX_D87F7E0C749A385C ON test');
-        $this->addSql('ALTER TABLE test DROP test_id_id');
+        $this->addSql('ALTER TABLE company DROP password_company');
     }
 
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
-        $this->addSql('ALTER TABLE test ADD test_id_id INT NOT NULL');
-        $this->addSql('ALTER TABLE test ADD CONSTRAINT FK_D87F7E0C749A385C FOREIGN KEY (test_id_id) REFERENCES do_do (id)');
-        $this->addSql('CREATE INDEX IDX_D87F7E0C749A385C ON test (test_id_id)');
+        $this->addSql('ALTER TABLE company ADD password_company VARCHAR(255) NOT NULL');
     }
 }
