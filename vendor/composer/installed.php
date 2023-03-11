@@ -5,7 +5,7 @@
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '23e41acfd80266734fbd3c36ab023e16098c8985',
+        'reference' => '9dc2e5356901afe50538435fc323eb671dcd8d9d',
         'name' => '__root__',
         'dev' => true,
     ),
@@ -16,7 +16,7 @@
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '23e41acfd80266734fbd3c36ab023e16098c8985',
+            'reference' => '9dc2e5356901afe50538435fc323eb671dcd8d9d',
             'dev_requirement' => false,
         ),
         'doctrine/cache' => array(
@@ -649,6 +649,15 @@
             'reference' => 'edac10d167b78b1d90f46a80320d632de0bd9f2f',
             'dev_requirement' => false,
         ),
+        'symfony/translation' => array(
+            'pretty_version' => 'v5.4.21',
+            'version' => '5.4.21.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../symfony/translation',
+            'aliases' => array(),
+            'reference' => '6996affeea65705086939894b77110e9a7f80874',
+            'dev_requirement' => false,
+        ),
         'symfony/translation-contracts' => array(
             'pretty_version' => 'v2.5.2',
             'version' => '2.5.2.0',
@@ -657,6 +666,12 @@
             'aliases' => array(),
             'reference' => '136b19dd05cdf0709db6537d058bcab6dd6e2dbe',
             'dev_requirement' => false,
+        ),
+        'symfony/translation-implementation' => array(
+            'dev_requirement' => false,
+            'provided' => array(
+                0 => '2.3',
+            ),
         ),
         'symfony/validator' => array(
             'pretty_version' => 'v5.4.21',
