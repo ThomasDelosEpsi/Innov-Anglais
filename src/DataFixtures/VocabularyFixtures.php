@@ -6,7 +6,9 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use App\Entity\Vocabulary;
-class VocabularyFixtures extends Fixture
+use Symfony\Component\Translation\TranslatableMessage;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+class VocabularyFixtures extends Fixture implements DependentFixtureInterface
 {
     private $faker;
 
@@ -17,15 +19,26 @@ class VocabularyFixtures extends Fixture
 
     public function load(ObjectManager $manager): void
     {
-        for($i=0;$i<10;$i++){
-            $vocabularies = new Vocabulary();
-            $translateWord = new translate();
-            $vocabularies->setNomVocabulaire($this->faker->Word());
-            $this->addReference('vocabulary'.$i, $vocabularies);
-            $translateWord->setTraduction($this->faker->Word());
-            $this->addReference('translate'.$i, $translateWord);            
-            $manager->persist($vocabularies);
+        for($i=0;$i<30;$i++){
+            $vocabulary = new Vocabulary();
+            $vocabulary->setNameVocabulary($this->faker->Word())
+            ->setTranslateWord($this->trad($vocabulary->getNameVocabulary()))
+            ->setCategory($this->getReference('category'.mt_rand(0,9)));   
+            $this->addReference('vocabulary'.$i, $vocabulary);
+            $manager->persist($vocabulary);
         }
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            CategoryFixtures::class,
+        ];
+    }
+
+    public function trad($word){
+        $message = new TransLatableMessage($word);
+        return $message;
     }
 }
