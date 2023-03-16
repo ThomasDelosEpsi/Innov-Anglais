@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 
-#[ApiResource()]
+#[ApiResource(normalizationContext:['groups' => ['read']])]
 #[ORM\Entity(repositoryClass: CompanyRepository::class)]
 
 class Company
@@ -19,12 +19,15 @@ class Company
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["read"])]
     private ?string $name_company = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["read"])]
     private ?string $phone_company = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["read"])]
     private ?string $mail_company = null;
 
     #[ORM\OneToMany(mappedBy: 'id_company', targetEntity: Test::class)]

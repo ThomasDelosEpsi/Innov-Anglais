@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 
-#[ApiResource()]
+#[ApiResource(normalizationContext:['groups' => ['read']])]
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
 {
@@ -18,6 +18,7 @@ class Category
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["read"])]
     private ?string $name_category = null;
 
     #[ORM\OneToMany(mappedBy: 'category', targetEntity: Vocabulary::class, orphanRemoval: true)]
