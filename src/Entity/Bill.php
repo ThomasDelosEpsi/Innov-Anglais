@@ -5,7 +5,9 @@ namespace App\Entity;
 use App\Repository\BillRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
+#[ApiResource()]
 #[ORM\Entity(repositoryClass: BillRepository::class)]
 class Bill
 {
