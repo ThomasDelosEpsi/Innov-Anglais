@@ -7,9 +7,11 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
+#[ApiResource(normalizationContext:['groups' => ['read']])]
 #[ORM\Entity(repositoryClass: ThemeRepository::class)]
-#[ApiResource()]
+
 class Theme
 {
     #[ORM\Id]
@@ -17,7 +19,9 @@ class Theme
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups(["read"])]
     #[ORM\Column(length: 255)]
+
     private ?string $name_theme = null;
 
     #[ORM\OneToMany(mappedBy: 'id_theme', targetEntity: Test::class, orphanRemoval: true)]
