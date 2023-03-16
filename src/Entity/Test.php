@@ -5,8 +5,9 @@ namespace App\Entity;
 use App\Repository\TestRepository;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
-#[ApiResource()]
+#[ApiResource(normalizationContext:['groups' => ['read']])]
 #[ORM\Entity(repositoryClass: TestRepository::class)]
 class Test
 {
@@ -16,14 +17,17 @@ class Test
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["read"])]
     private ?string $name_test = null;
 
 
     #[ORM\ManyToOne(inversedBy: 'test')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(["read"])]
     private ?Theme $id_theme = null;
 
     #[ORM\ManyToOne(inversedBy: 'test')]
+    #[Groups(["read"])]
     private ?Company $id_company = null;
 
 
