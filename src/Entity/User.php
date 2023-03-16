@@ -10,7 +10,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 
-#[ApiResource(normalizationContext:['groups' => ['read']], itemOperations:["get", "patch"=>["security"=>"is_granted('ROLE_ADMIN') or object == user"]])]
+#[ApiResource(normalizationContext:['groups' => ['read']], itemOperations:["get", "patch"=>["security"=>"is_granted('ROLE_ADMIN') or object == user"]], collectionOperations:["get", "post"=>["security"=>"is_granted('ROLE_ADMIN')"]])]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 
 
