@@ -6,11 +6,8 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use App\Entity\Test;
-use App\Entity\Theme;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
-
-
-class TestFixtures extends Fixture
+class TestFixtures extends Fixture implements DependentFixtureInterface
 {
     private $faker;
 
@@ -31,11 +28,19 @@ class TestFixtures extends Fixture
         for($i=0;$i<10;$i++){
             $test = new Test();
             $test->setNameTest($this->faker->word())
-            ->setIdTheme($this->getReference('theme'.mt_rand(0,9)));
-            
+            ->setIdTheme($this->getReference('theme'.mt_rand(0,9)))
+            ->setIdCompany($this->getReference('company'.mt_rand(0,9)));
             $this->addReference('test'.$i, $test);
             $manager->persist($test);
         }
         $manager->flush();
+    }
+
+    public function getDependencies()
+    {
+        return [
+            ThemeFixtures::class,
+            CompanyFixtures::class,
+        ];
     }
 }
