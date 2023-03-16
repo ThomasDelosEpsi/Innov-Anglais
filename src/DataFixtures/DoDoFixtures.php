@@ -7,6 +7,7 @@ use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use App\Entity\DoDo;
 use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+use Symfony\Component\Form\Extension\Core\Type\DateTimeType;
 class DoDoFixtures extends Fixture implements DependentFixtureInterface
 {
     private $faker;
