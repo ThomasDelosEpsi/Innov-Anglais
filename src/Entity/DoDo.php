@@ -9,9 +9,11 @@ use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 
-#[ApiResource()]
+
+#[ApiResource(normalizationContext:['groups' => ['read']])]
 #[ORM\Entity(repositoryClass: DoDoRepository::class)]
 #[UniqueEntity(
     fields: ['test', 'user'],
@@ -23,21 +25,25 @@ class DoDo
     
 
     #[ORM\Column]
+    #[Groups(["read"])]
     private ?float $resultTest = null;
 
     
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups(["read"])]
     private ?\DateTimeInterface $dateExecution = null;
 
 
     #[ORM\Id]
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(["read"])]
     private ?Test $test = null;
 
     #[ORM\Id]
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(["read"])]
     private ?User $user = null;
 
     public function __construct()
