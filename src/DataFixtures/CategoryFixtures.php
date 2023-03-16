@@ -6,6 +6,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use App\Entity\Category;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 class CategoryFixtures extends Fixture
 {
     private $faker;
@@ -19,7 +20,7 @@ class CategoryFixtures extends Fixture
     {
         for($i=0;$i<10;$i++){
             $categories = new Category();
-            $categories->setNomCategory($this->faker->word());
+            $categories->setNameCategory($this->faker->word());
             $this->addReference('category'.$i, $categories);
             $manager->persist($categories);
         }

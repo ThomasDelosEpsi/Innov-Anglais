@@ -6,6 +6,10 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use App\Entity\Test;
+use App\Entity\Theme;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
+
+
 class TestFixtures extends Fixture
 {
     private $faker;
@@ -17,9 +21,18 @@ class TestFixtures extends Fixture
     public function load(ObjectManager $manager): void
     {
         for($i=0;$i<10;$i++){
+            $theme = new Theme();
+            $theme->setNameTheme($this->faker->word());
+            $this->addReference('theme'.$i, $theme);
+            $manager->persist($theme);
+        }
+  
+
+        for($i=0;$i<10;$i++){
             $test = new Test();
             $test->setNameTest($this->faker->word())
             ->setIdTheme($this->getReference('theme'.mt_rand(0,9)));
+            
             $this->addReference('test'.$i, $test);
             $manager->persist($test);
         }
