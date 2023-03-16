@@ -18,6 +18,14 @@ class TestFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         for($i=0;$i<10;$i++){
+            $theme = new Theme();
+            $theme->setNameTheme($this->faker->word());
+            $this->addReference('theme'.$i, $theme);
+            $manager->persist($theme);
+        }
+  
+
+        for($i=0;$i<10;$i++){
             $test = new Test();
             $test->setNameTest($this->faker->word())
             ->setIdTheme($this->getReference('theme'.mt_rand(0,9)))

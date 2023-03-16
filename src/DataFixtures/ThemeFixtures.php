@@ -6,6 +6,7 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 use Faker\Factory;
 use App\Entity\Theme;
+use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 class ThemeFixtures extends Fixture
 {
     private $faker;
