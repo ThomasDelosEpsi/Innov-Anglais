@@ -904,6 +904,15 @@
             'reference' => '57c03a5e89ed7c2d7a1a09258dfec12f95f95adb',
             'dev_requirement' => false,
         ),
+        'symfony/web-profiler-bundle' => array(
+            'pretty_version' => 'v5.4.21',
+            'version' => '5.4.21.0',
+            'type' => 'symfony-bundle',
+            'install_path' => __DIR__ . '/../symfony/web-profiler-bundle',
+            'aliases' => array(),
+            'reference' => 'a83337a813d1398789bf4190a56dc3c4d8cc4d93',
+            'dev_requirement' => true,
+        ),
         'symfony/yaml' => array(
             'pretty_version' => 'v5.4.21',
             'version' => '5.4.21.0',
