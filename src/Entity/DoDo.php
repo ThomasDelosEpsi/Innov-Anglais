@@ -14,7 +14,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
 #[ApiResource()]
 #[ORM\Entity(repositoryClass: DoDoRepository::class)]
 #[UniqueEntity(
-    fields: ['dateExecution', 'test', 'user'],
+    fields: ['test', 'user'],
     errorPath: 'port',
     message: 'This port is already in use on that host.',
 )]
@@ -25,7 +25,7 @@ class DoDo
     #[ORM\Column]
     private ?float $resultTest = null;
 
-    #[ORM\Id]
+    
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $dateExecution = null;
 

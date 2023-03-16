@@ -19,8 +19,10 @@ class DoDoFixtures extends Fixture implements DependentFixtureInterface
     public function load(ObjectManager $manager): void
     {
         for($i=0;$i<10;$i++){
+            
             $DoDo = new DoDo();
-            $DoDo->setDateExecution($this->faker->dateTime())
+            $DoDo->setDateExecution($this->faker->dateTimeThisYear())
+            //->setDateExecution(new \DateTime($this->faker->date()))
             ->setResultTest($this->faker->numberBetween(0,20))
             ->setTest($this->getReference('test'.mt_rand(0,9)))
             ->setUser($this->getReference('user'.mt_rand(0,9)));
