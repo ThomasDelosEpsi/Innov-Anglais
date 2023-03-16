@@ -7,8 +7,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
-#[ApiResource()]
+#[ApiResource(normalizationContext:['groups' => ['read']])]
 #[ORM\Entity(repositoryClass: VocabularyRepository::class)]
 class Vocabulary
 {
@@ -17,14 +18,20 @@ class Vocabulary
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups(["read"])]
     #[ORM\Column(length: 255)]
+ 
     private ?string $name_vocabulary = null;
 
+    #[Groups(["read"])]
     #[ORM\Column(length: 255)]
+ 
     private ?string $translate_word = null;
 
+    #[Groups(["read"])]
     #[ORM\ManyToOne(inversedBy: 'vocabulary')]
     #[ORM\JoinColumn(nullable: false)]
+
     private ?Category $category = null;
 
     #[ORM\ManyToMany(targetEntity: Test::class)]
