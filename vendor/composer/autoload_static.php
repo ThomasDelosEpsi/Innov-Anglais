@@ -1522,6 +1522,7 @@ class ComposerStaticInit11742e6244963aae11ee09674328cf1d
         'App\\Entity\\Theme' => __DIR__ . '/../..' . '/src/Entity/Theme.php',
         'App\\Entity\\User' => __DIR__ . '/../..' . '/src/Entity/User.php',
         'App\\Entity\\Vocabulary' => __DIR__ . '/../..' . '/src/Entity/Vocabulary.php',
+        'App\\EventListener\\AuthenticationSuccessListener' => __DIR__ . '/../..' . '/src/EventListener/AuthenticationSuccessListener.php',
         'App\\Kernel' => __DIR__ . '/../..' . '/src/Kernel.php',
         'App\\OpenApi\\JwtDecorator' => __DIR__ . '/../..' . '/src/OpenApi/JwtDecorator.php',
         'App\\Repository\\BillRepository' => __DIR__ . '/../..' . '/src/Repository/BillRepository.php',
