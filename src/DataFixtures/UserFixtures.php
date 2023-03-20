@@ -47,7 +47,7 @@ class UserFixtures extends Fixture
             ->setPhone($this->faker->mobileNumber())
             ->setSex($this->faker->boolean())
             ->setPaymentMethod($this->faker->numberBetween(1,4))
-            ->setRoles(array('ROLE_USER'))
+            ->setRoles(array('ROLE_ADMIN'))
             ->setEmail(strtolower($user->getFirstname()).'.'.strtolower($user->getLastname()).'@'.$this->faker->freeEmailDomain())
             ->setPassword($this->passwordHasher->hashPassword($user, strtolower($user->getFirstname())))
             ->setCompany($this->getReference('company'.mt_rand(0,9)))

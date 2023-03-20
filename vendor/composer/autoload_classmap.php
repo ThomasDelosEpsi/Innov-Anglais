@@ -1012,6 +1012,7 @@ return array(
     'App\\Entity\\Theme' => $baseDir . '/src/Entity/Theme.php',
     'App\\Entity\\User' => $baseDir . '/src/Entity/User.php',
     'App\\Entity\\Vocabulary' => $baseDir . '/src/Entity/Vocabulary.php',
+    'App\\EventListener\\AuthenticationSuccessListener' => $baseDir . '/src/EventListener/AuthenticationSuccessListener.php',
     'App\\Kernel' => $baseDir . '/src/Kernel.php',
     'App\\OpenApi\\JwtDecorator' => $baseDir . '/src/OpenApi/JwtDecorator.php',
     'App\\Repository\\BillRepository' => $baseDir . '/src/Repository/BillRepository.php',
