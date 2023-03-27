@@ -6,8 +6,11 @@ use App\Repository\CompanyRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
+#[ApiResource(normalizationContext:['groups' => ['read']])]
 #[ORM\Entity(repositoryClass: CompanyRepository::class)]
+
 class Company
 {
     #[ORM\Id]
@@ -16,16 +19,16 @@ class Company
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["read"])]
     private ?string $name_company = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["read"])]
     private ?string $phone_company = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["read"])]
     private ?string $mail_company = null;
-
-    #[ORM\Column(length: 255)]
-    private ?string $password_company = null;
 
     #[ORM\OneToMany(mappedBy: 'id_company', targetEntity: Test::class)]
     private Collection $test;
@@ -76,18 +79,6 @@ class Company
     public function setMailCompany(string $mail_company): self
     {
         $this->mail_company = $mail_company;
-
-        return $this;
-    }
-
-    public function getPasswordCompany(): ?string
-    {
-        return $this->password_company;
-    }
-
-    public function setPasswordCompany(string $password_company): self
-    {
-        $this->password_company = $password_company;
 
         return $this;
     }

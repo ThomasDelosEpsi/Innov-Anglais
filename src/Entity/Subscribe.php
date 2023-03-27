@@ -6,7 +6,10 @@ use App\Repository\SubscribeRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Serializer\Annotation\Groups;
 
+#[ApiResource(normalizationContext:['groups' => ['read']])]
 #[ORM\Entity(repositoryClass: SubscribeRepository::class)]
 class Subscribe
 {
@@ -16,12 +19,15 @@ class Subscribe
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups(["read"])]
     private ?string $type_subscribe = null;
 
     #[ORM\Column]
+    #[Groups(["read"])]
     private ?float $price = null;
 
     #[ORM\OneToMany(mappedBy: 'subscribe', targetEntity: User::class)]
+    #[Groups(["read"])]
     private Collection $user;
 
     public function __construct()

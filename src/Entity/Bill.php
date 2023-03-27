@@ -5,7 +5,9 @@ namespace App\Entity;
 use App\Repository\BillRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Core\Annotation\ApiResource;
 
+#[ApiResource(normalizationContext:['groups' => ['read']])]
 #[ORM\Entity(repositoryClass: BillRepository::class)]
 class Bill
 {
@@ -15,14 +17,17 @@ class Bill
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups(["read"])]
     private ?\DateTimeInterface $date_bill = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(["read"])]
     private ?User $user = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
+    #[Groups(["read"])]
     private ?Subscribe $subscribe = null;
 
     public function getId(): ?int
