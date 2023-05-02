@@ -36,7 +36,20 @@ namespace app_api
 
         [JsonPropertyName("company")]
         public string company { get; set; }
+
+        [JsonPropertyName("subscribe")]
+        public List<Subscriber> subscribe { get; set; }
+        public string dispSubscribe()
+        {
+            string res = "";
+            foreach(Subscriber s in this.subscribe)
+            {
+                res += s.ToString();
+            }
+            return res;
+        }
     }
+
 
     public class ListUser {
         [JsonProperty("hydra:member")]
