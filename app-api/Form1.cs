@@ -30,14 +30,16 @@ namespace app_api
                 try
                 {
                     string uri = $"https://s4-8001.nuage-peda.fr/Innov-Anglais/public/api/users";
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODI0NDE1ODQsImV4cCI6MTY4MjQ0NTE4NCwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImNoYW50YWwuY2hhdXZldEBub29zLmZyIn0.7j_RK9kU-x5oMxHJtfbg3gsmxyBzk2FGRBLtVbsB5-Osx71M8ikGB3pOHHwIYhKaisMvrBFVmY8c-vTZImqmN7bDV9pUbGovccOUG0DtqDyAWaooVxscu7XZqL3iXRXL8wu-qiiUvSdKCkGwGH3wf68Z7hhamFJ360sDyxZJl3eaObeIIoE6cFn8di9g6MkTSdXvMnUC2OXl2zSn51sudU_BEMX3gaWahrEY86hvykh3hhIy7pHci4wRwBXmI2pHtSpJ4rxFdMHGnTQps9ZVKQI7a348DEeghJ2kh5-TozhOL7axTh-_s49gribAn7HQ3FpxZHoAiQklZNgODyu33g");
+                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODI2NzczMjksImV4cCI6MTY4MjY4MDkyOSwicm9sZXMiOlsiUk9MRV9BRE1JTiIsIlJPTEVfVVNFUiJdLCJ1c2VybmFtZSI6ImNoYW50YWwuY2hhdXZldEBub29zLmZyIn0.7Ckbqwhn67rtTi9eBtUiT2ootlk1jTX_hEc6qLWPuKZrbGK2QauSqEitPyVpQxofyy-CZHJDW84K0wStLe4CkrVEHZvVgh7fsy-MANnivTGDYu1DYKdrZt80Li-tof2nOFdE0qr4Hx540fy2dRwnTU4yyDZ5-wA2T_sOCBAqVBdgFa_fPjY5amSJaagQJRjZvfmQP2xAmciI3b7ob5sQa09z9ln_TxLX5cjWPqto9_jp2CCFzt2SPyI184khgiqGgfUWGM5RGzOry7buFlhc3P9MOTyXk9g0pfdA1v8Ufc_7cmlqNfVj8J9hIS6W7hi7oQ21KH0Ebks82m1Dsr6d-g");
                     HttpResponseMessage response = await client.GetAsync(uri);
                     if (response.IsSuccessStatusCode)
                     {
                         string json = await response.Content.ReadAsStringAsync();
-                        var user = JsonConvert.DeserializeObject<Users>(json);
-                        //Users infoUser = new Users(user);
-                        MessageBox.Show(user.firstname);
+                        ListUser user = JsonConvert.DeserializeObject<ListUser>(json);
+                        foreach (Users utilisateur in user.utilisateur)
+                        {
+                            MessageBox.Show(utilisateur.firstname);
+                        }
                     } else
                     {
                         MessageBox.Show($"Error: {response.StatusCode}");
