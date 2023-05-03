@@ -16,75 +16,55 @@ using System.Runtime;
 using System.Text.Json.Nodes;
 using Newtonsoft.Json.Linq;
 using System.Threading.Tasks;
+using static System.Windows.Forms.DataFormats;
+using System.Security.Cryptography;
+using RestSharp;
+using RestSharp.Authenticators;
+using System.Windows.Forms;
+using System;
+using System.Collections.Generic;
 //using System.Text.Json;
 
 namespace app_api
 {
     public partial class Form1 : Form
     {
-        string token = "0";
         public Form1()
         {
             InitializeComponent();
         }
 
-        private async void button1_Click(object sender, EventArgs e)
-        {
-            using (HttpClient client = new HttpClient())
-            {
-                    string uri = $"https://s4-8001.nuage-peda.fr/Innov-Anglais/public/api/users";
-                    client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
-                    HttpResponseMessage response = await client.GetAsync(uri);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        string json = await response.Content.ReadAsStringAsync();
-                        JObject user = JsonConvert.DeserializeObject<JObject>(json);
-                        JArray listUsers = (JArray)user["hydra:member"];
-                    foreach (JObject utilisateur in listUsers)
-                    {
-                        label1.Text += "\n" + utilisateur["firstname"];
-                        label2.Text += "\n" + utilisateur["lastname"];
-                        if ((string)utilisateur["sex"] == "false")
-                        {
-                            label3.Text += "\nHomme";
-                        } else
-                        {
-                            label3.Text += "\nFemme";
-                        }
-                        label4.Text += "\n" + utilisateur["phone"];
-                        label5.Text += "\n" + (string)utilisateur["subscribe"]["type_subscribe"];
-                        label6.Text += "\n" + (string)utilisateur["subscribe"]["price"];
-                        }
-                    } else
-                    {
-                        MessageBox.Show($"Error: {response.StatusCode}");
-                    }
-            }
-        }
-
         private async void button2_Click(object sender, EventArgs e)
         {
-            /*using (HttpClient client = new HttpClient())
+            if (textBox1.Text != "" && textBox2.Text != "")
             {
-                Token userToken = new Token
+                try
                 {
-                    email = textBox1.Text,
-                    password = textBox2.Text
-                };
 
-                var postContent = new StringContent(
-                JsonSerializer.Serialize(Stream, userToken),
-                Encoding.UTF8,
-                "application/json"
-                );
+                    var client = new RestClient("https://s4-8001.nuage-peda.fr/Innov-Anglais/public/api/");
+                    var request = new RestRequest("authentication_token", Method.Post);
+                    request.AddJsonBody(new { email = textBox1.Text, password = textBox2.Text });
+                    var response = client.ExecuteAsync(request);
+                    string rawResponse = response.Result.Content;
 
-                var response = await client.PostAsync("oauth/login", postContent);
-                if (!response.IsSuccessStatusCode)
-                    throw new Exception("Third party API request failed");
+                    var token = JsonConvert.DeserializeObject<Dictionary<string, object>>(rawResponse)["token"].ToString();
 
-                await using var stream = await response.Content.ReadAsStreamAsync();
-                return JsonSerializer.DeserializeAsync<Token>(stream);
-            }*/
+                    MessageBox.Show(token);
+
+                    Form2 form2 = new Form2();
+                    this.Hide();
+                    form2.Show();
+
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Erreur d'authentification");
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez entrer votre email et votre mot de passe");
+            }    
         }
     }
 }
