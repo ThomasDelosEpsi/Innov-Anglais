@@ -35,6 +35,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label6
@@ -42,18 +43,18 @@
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(732, 9);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(40, 25);
+            this.label6.Size = new System.Drawing.Size(179, 25);
             this.label6.TabIndex = 13;
-            this.label6.Text = "Prix";
+            this.label6.Text = "Prix de l\'abonnement";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(538, 9);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(116, 25);
+            this.label5.Size = new System.Drawing.Size(170, 25);
             this.label5.TabIndex = 12;
-            this.label5.Text = "Abonnement";
+            this.label5.Text = "Type d\'abonnement";
             // 
             // label4
             // 
@@ -62,7 +63,7 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(92, 25);
             this.label4.TabIndex = 11;
-            this.label4.Text = "Telephone";
+            this.label4.Text = "Téléphone";
             // 
             // label3
             // 
@@ -80,7 +81,7 @@
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 25);
             this.label2.TabIndex = 9;
-            this.label2.Text = "Prenom";
+            this.label2.Text = "Prénom";
             // 
             // label1
             // 
@@ -93,19 +94,30 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(905, 392);
+            this.button1.Location = new System.Drawing.Point(1020, 332);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(112, 34);
+            this.button1.Size = new System.Drawing.Size(216, 34);
             this.button1.TabIndex = 7;
-            this.button1.Text = "button1";
+            this.button1.Text = "Afficher les utilisateurs";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(1020, 392);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(216, 34);
+            this.button2.TabIndex = 14;
+            this.button2.Text = "Ajouter un utilisateur";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1267, 450);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -129,5 +141,6 @@
         private Label label2;
         private Label label1;
         private Button button1;
+        private Button button2;
     }
 }
