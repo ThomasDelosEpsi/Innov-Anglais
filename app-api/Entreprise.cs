@@ -13,32 +13,36 @@ using System.Collections.ObjectModel;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+
 namespace app_api
 {
-    public partial class AdminVoc : Form
+    public partial class Entreprise : Form
     {
-        public AdminVoc()
+        public Entreprise()
         {
             InitializeComponent();
         }
 
         private async void button1_Click(object sender, EventArgs e)
         {
+
             using (HttpClient client = new HttpClient())
             {
                 try
                 {
-                    string uri = $"https://s4-8023.nuage-peda.fr/Innov_Anglais/public/api/vocabularies";
+                    string uri = $"https://s4-8023.nuage-peda.fr/Innov_Anglais/public/api/companies";
                     //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "");
                     HttpResponseMessage response = await client.GetAsync(uri);
                     if (response.IsSuccessStatusCode)
                     {
                         string json = await response.Content.ReadAsStringAsync();
-                        ListVoc voc = JsonConvert.DeserializeObject<ListVoc>(json);
-                        foreach (Vocabularies vocabularie in voc.vocabulaire)
+                        ListEntre ent = JsonConvert.DeserializeObject<ListEntre>(json);
+                        foreach (Entreprises entreprise in ent.entreprise)
                         {
-                            label3.Text+=vocabularie.name_vocabulary + "\n";
-                            label4.Text += vocabularie.translate_word + "\n";
+                            label1.Text += entreprise.mail_company + "\n";
+                            label2.Text += entreprise.phone_company + "\n";
+                            label3.Text += entreprise.mail_company + "\n";
                         }
                     }
                     else
@@ -52,71 +56,35 @@ namespace app_api
                 }
             }
 
-
         }
 
-        private void button2_Click(object sender, EventArgs e)
-        {
-            Acceuil acceuil = new Acceuil();
-            acceuil.Show();
-            this.Hide();
-        }
-
-        private async void AdminVoc_Load(object sender, EventArgs e)
-        {
-            using (HttpClient client1 = new HttpClient())
-            {
-                try
-                {
-                    string uri1 = $"https://s4-8023.nuage-peda.fr/Innov_Anglais/public/api/categories";
-                    //client1.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODMxMDA4MTAsImV4cCI6MTY4MzEwNDQxMCwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoibWFydGluZS5jYXJwZW50aWVyQG5vb3MuZnIifQ.BIcZc3HCdziBKuumvw2oUZKCgfKgYp4uUuBR8sVYR2PMUufQcwJ22Uc88M0yV7TCkJLgd3btUMrdD-BzGmcGgaNBnZUg3vg-V74ijbig93yTfg4RxqNGqw0su5N6sXLhezry8xKViwrvOUXSQo9AFyVdzPCg1L_cwLMzKrVvNCQ2zuEQZ9lAxbS_jFX40n940ox_f3QdVSas7af5sNJowqIeF0N6rQ8AQjZUkSjEhLCIvdZ4C5-H-BlJJOLKE5wKuhQVxHdL5X14uNmn_G-wyQixZDHGD_MthfA1cJsHOYibb1icU4xzzsRKQcLjURLQ7jhSWnGNUuNXBVM4z16_VA");
-                    HttpResponseMessage response = await client1.GetAsync(uri1);
-                    if (response.IsSuccessStatusCode)
-                    {
-                        string json = await response.Content.ReadAsStringAsync();
-                        ListCat cat = JsonConvert.DeserializeObject<ListCat>(json);
-                        foreach (Categories categorie in cat.categorie)
-                        {
-                            comboBox1.Items.Add(categorie);
-
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show($"Error: {response.StatusCode}");
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message);
-                }
-            }
-        }
-
-        private async void button3_Click(object sender, EventArgs e)
+        private async void button2_Click(object sender, EventArgs e)
         {
             using (HttpClient client2 = new HttpClient())
             {
                 try
                 {
-                    string uri2 = $"https://s4-8023.nuage-peda.fr/Innov_Anglais/public/api/vocabularies";
+                    string uri2 = $"https://s4-8023.nuage-peda.fr/Innov_Anglais/public/api/companies";
 
                     //client1.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODMxMDA4MTAsImV4cCI6MTY4MzEwNDQxMCwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoibWFydGluZS5jYXJwZW50aWVyQG5vb3MuZnIifQ.BIcZc3HCdziBKuumvw2oUZKCgfKgYp4uUuBR8sVYR2PMUufQcwJ22Uc88M0yV7TCkJLgd3btUMrdD-BzGmcGgaNBnZUg3vg-V74ijbig93yTfg4RxqNGqw0su5N6sXLhezry8xKViwrvOUXSQo9AFyVdzPCg1L_cwLMzKrVvNCQ2zuEQZ9lAxbS_jFX40n940ox_f3QdVSas7af5sNJowqIeF0N6rQ8AQjZUkSjEhLCIvdZ4C5-H-BlJJOLKE5wKuhQVxHdL5X14uNmn_G-wyQixZDHGD_MthfA1cJsHOYibb1icU4xzzsRKQcLjURLQ7jhSWnGNUuNXBVM4z16_VA");
                     string[] non = { };
-                    Categories Cat = (Categories)comboBox1.SelectedItem;
+                    string[] users = { };
+                    string[] Users = { };
                     string json = JsonConvert.SerializeObject(
                         new
                         {
-                            category = Cat.idInAPI,
                             test = non,
-                            nameVocabulary = textBox1.Text,
-                            translateWord = textBox2.Text,
+                            User = Users,
+                            nameCompany = textBox1.Text,
+                            phoneCompany = textBox2.Text,
+                            mailCompany = textBox3.Text,
+                            user = users
                         }); ;
                     HttpContent content = new StringContent(json, Encoding.UTF8, "application/ld+json");
                     HttpResponseMessage response = await client2.PostAsync(uri2, content);
                     if (response.IsSuccessStatusCode)
                     {
-                        MessageBox.Show("Mot ajouté");
+                        MessageBox.Show("Entreprise ajoutée");
                     }
                     else
                     {
@@ -132,5 +100,4 @@ namespace app_api
             }
         }
     }
-    }
-
+}

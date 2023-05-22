@@ -41,7 +41,7 @@ namespace app_api
                 try
                 {
 
-                    var client = new RestClient("https://s4-8001.nuage-peda.fr/Innov-Anglais/public/api/");
+                    var client = new RestClient("https://s4-8023.nuage-peda.fr/Innov_Anglais/public/api/");
                     var request = new RestRequest("authentication_token", Method.Post);
                     request.AddJsonBody(new { email = textBox1.Text, password = textBox2.Text });
                     var response = client.ExecuteAsync(request);
@@ -49,11 +49,9 @@ namespace app_api
 
                     var token = JsonConvert.DeserializeObject<Dictionary<string, object>>(rawResponse)["token"].ToString();
 
-                    MessageBox.Show(token);
-
-                    Form2 form2 = new Form2();
+                    Acceuil acceuil= new Acceuil();
+                    acceuil.Show();
                     this.Hide();
-                    form2.Show();
 
                 }
                 catch (Exception ex)
