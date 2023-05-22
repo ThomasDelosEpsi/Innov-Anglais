@@ -49,9 +49,9 @@ namespace app_api
 
                     var token = JsonConvert.DeserializeObject<Dictionary<string, object>>(rawResponse)["token"].ToString();
 
-                    MessageBox.Show(token);
+                    //MessageBox.Show(token);
 
-                    Form2 form2 = new Form2();
+                    Form2 form2 = new Form2(token);
                     this.Hide();
                     form2.Show();
 
