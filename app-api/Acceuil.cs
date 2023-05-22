@@ -12,14 +12,16 @@ namespace app_api
 {
     public partial class Acceuil : Form
     {
-        public Acceuil()
+        string token;
+        public Acceuil(string token)
         {
+            this.token = token;
             InitializeComponent();
         }
 
         private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form2 f2 = new Form2();
+            Form2 f2 = new Form2(this.token);
             f2.Show();
             this.Hide();
 
@@ -27,21 +29,21 @@ namespace app_api
 
         private void vocabularyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AdminVoc adminVoc= new AdminVoc();
+            AdminVoc adminVoc= new AdminVoc(this.token);
             adminVoc.Show();
             this.Hide();
         }
 
         private void testToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            test test = new test();
+            test test = new test(this.token);
             test.Show();
             this.Hide();
         }
 
         private void companyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Entreprise entreprise = new Entreprise();
+            Entreprise entreprise = new Entreprise(this.token);
             entreprise.Show();
             this.Hide();
         }

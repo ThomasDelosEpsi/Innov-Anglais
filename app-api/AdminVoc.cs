@@ -17,8 +17,10 @@ namespace app_api
 {
     public partial class AdminVoc : Form
     {
-        public AdminVoc()
+        string token;
+        public AdminVoc(string token)
         {
+            this.token = token;
             InitializeComponent();
         }
 
@@ -28,7 +30,7 @@ namespace app_api
             {
                 try
                 {
-                    string uri = $"https://s4-8023.nuage-peda.fr/Innov_Anglais/public/api/vocabularies";
+                    string uri = $"https://s4-8001.nuage-peda.fr/Innov-Anglais/public/api/vocabularies";
                     //client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "");
                     HttpResponseMessage response = await client.GetAsync(uri);
                     if (response.IsSuccessStatusCode)
@@ -57,7 +59,7 @@ namespace app_api
 
         private void button2_Click(object sender, EventArgs e)
         {
-            Acceuil acceuil = new Acceuil();
+            Acceuil acceuil = new Acceuil(this.token);
             acceuil.Show();
             this.Hide();
         }
@@ -68,7 +70,7 @@ namespace app_api
             {
                 try
                 {
-                    string uri1 = $"https://s4-8023.nuage-peda.fr/Innov_Anglais/public/api/categories";
+                    string uri1 = $"https://s4-8023.nuage-peda.fr/Innov-Anglais/public/api/categories";
                     //client1.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODMxMDA4MTAsImV4cCI6MTY4MzEwNDQxMCwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoibWFydGluZS5jYXJwZW50aWVyQG5vb3MuZnIifQ.BIcZc3HCdziBKuumvw2oUZKCgfKgYp4uUuBR8sVYR2PMUufQcwJ22Uc88M0yV7TCkJLgd3btUMrdD-BzGmcGgaNBnZUg3vg-V74ijbig93yTfg4RxqNGqw0su5N6sXLhezry8xKViwrvOUXSQo9AFyVdzPCg1L_cwLMzKrVvNCQ2zuEQZ9lAxbS_jFX40n940ox_f3QdVSas7af5sNJowqIeF0N6rQ8AQjZUkSjEhLCIvdZ4C5-H-BlJJOLKE5wKuhQVxHdL5X14uNmn_G-wyQixZDHGD_MthfA1cJsHOYibb1icU4xzzsRKQcLjURLQ7jhSWnGNUuNXBVM4z16_VA");
                     HttpResponseMessage response = await client1.GetAsync(uri1);
                     if (response.IsSuccessStatusCode)
@@ -99,7 +101,7 @@ namespace app_api
             {
                 try
                 {
-                    string uri2 = $"https://s4-8023.nuage-peda.fr/Innov_Anglais/public/api/vocabularies";
+                    string uri2 = $"https://s4-8023.nuage-peda.fr/Innov-Anglais/public/api/vocabularies";
 
                     //client1.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE2ODMxMDA4MTAsImV4cCI6MTY4MzEwNDQxMCwicm9sZXMiOlsiUk9MRV9VU0VSIl0sInVzZXJuYW1lIjoibWFydGluZS5jYXJwZW50aWVyQG5vb3MuZnIifQ.BIcZc3HCdziBKuumvw2oUZKCgfKgYp4uUuBR8sVYR2PMUufQcwJ22Uc88M0yV7TCkJLgd3btUMrdD-BzGmcGgaNBnZUg3vg-V74ijbig93yTfg4RxqNGqw0su5N6sXLhezry8xKViwrvOUXSQo9AFyVdzPCg1L_cwLMzKrVvNCQ2zuEQZ9lAxbS_jFX40n940ox_f3QdVSas7af5sNJowqIeF0N6rQ8AQjZUkSjEhLCIvdZ4C5-H-BlJJOLKE5wKuhQVxHdL5X14uNmn_G-wyQixZDHGD_MthfA1cJsHOYibb1icU4xzzsRKQcLjURLQ7jhSWnGNUuNXBVM4z16_VA");
                     string[] non = { };
