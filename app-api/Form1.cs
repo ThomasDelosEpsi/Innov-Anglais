@@ -49,11 +49,10 @@ namespace app_api
 
                     var token = JsonConvert.DeserializeObject<Dictionary<string, object>>(rawResponse)["token"].ToString();
 
-                    //MessageBox.Show(token);
 
-                    Form2 form2 = new Form2(token);
+                    Acceuil acceuil= new Acceuil(token);
+                    acceuil.Show();
                     this.Hide();
-                    form2.Show();
 
                 }
                 catch (Exception ex)

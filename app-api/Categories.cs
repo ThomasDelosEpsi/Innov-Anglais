@@ -10,8 +10,14 @@ namespace app_api
 {
     public class Categories
     {
+        [JsonProperty("@id")]
+        public string idInAPI { get; set; }
         [JsonPropertyName("name_category")]
-        public string name_category { get; set; }
+        public string  name_category { get; set; }
+        public override string ToString()
+        {
+            return this.name_category;
+        }
     }
 
     public class ListCat
@@ -21,4 +27,6 @@ namespace app_api
         public List<Categories> categorie { get; set; }
 
     }
+
+
 }

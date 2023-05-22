@@ -65,10 +65,17 @@ namespace app_api
             }
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)
         {
             AddUser addUser = new AddUser(this.token);
             addUser.Show();
+            this.Hide();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            Acceuil acc = new Acceuil(this.token);
+            acc.Show();
             this.Hide();
         }
     }

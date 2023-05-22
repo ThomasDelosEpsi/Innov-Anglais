@@ -38,8 +38,9 @@
             // button2
             // 
             this.button2.Location = new System.Drawing.Point(374, 260);
+            this.button2.Margin = new System.Windows.Forms.Padding(2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(112, 34);
+            this.button2.Size = new System.Drawing.Size(132, 34);
             this.button2.TabIndex = 7;
             this.button2.Text = "Connexion";
             this.button2.UseVisualStyleBackColor = true;
@@ -48,6 +49,7 @@
             // textBox2
             // 
             this.textBox2.Location = new System.Drawing.Point(305, 196);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(2);
             this.textBox2.Name = "textBox2";
             this.textBox2.PasswordChar = '*';
             this.textBox2.Size = new System.Drawing.Size(253, 31);
@@ -55,7 +57,8 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(305, 97);
+            this.textBox1.Location = new System.Drawing.Point(305, 98);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(2);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(253, 31);
             this.textBox1.TabIndex = 10;
@@ -65,6 +68,7 @@
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label7.Location = new System.Drawing.Point(305, 60);
+            this.label7.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(126, 25);
             this.label7.TabIndex = 11;
@@ -75,6 +79,7 @@
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point);
             this.label8.Location = new System.Drawing.Point(305, 159);
+            this.label8.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(120, 25);
             this.label8.TabIndex = 12;
@@ -90,8 +95,9 @@
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.button2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "Connection";
             this.ResumeLayout(false);
             this.PerformLayout();
 
